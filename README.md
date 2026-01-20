@@ -1,5 +1,5 @@
 # Product
-
+```
 Product/
 ├─ app/
 │  ├─ Http/
@@ -32,3 +32,4 @@ Product/
 ├─ routes/web.php
 ├─ tests/Feature/ProductTest.php
 └─ .env
+ ```
