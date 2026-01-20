@@ -56,7 +56,7 @@
                       rows="3">{{ old('description', $product->description) }}</textarea>
         </div>
 
-        <button class="btn btn-success">Update</button>
+        <button type="submit" class="btn btn-success">Update</button>
         <a href="{{ route('products.index') }}" class="btn btn-secondary">Back</a>
     </form>
 </div>

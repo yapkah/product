@@ -40,7 +40,7 @@
                     <form method="POST" action="{{ route('products.destroy',$p) }}" style="display:inline">
                         @csrf
                         @method('DELETE')
-                        <button onclick="return confirm('Delete?')">Delete</button>
+                        <button type="submit" onclick="return confirm('Delete?')">Delete</button>
                     </form>
                 </td>
             </tr>
