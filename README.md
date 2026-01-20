@@ -1,4 +1,17 @@
 # Product
+
+# Setup
+Run composer install
+
+Create a DB named product in localhost
+
+run migrations
+php artisan migrate --path=database/migrations
+
+build the project
+php artisan serve
+
+# Folder Structure
 ```
 Product/
 ├─ app/

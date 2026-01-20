@@ -26,4 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('products/bulk-delete', [ProductController::class, 'bulkDelete']);
     Route::get('products/export', [ProductController::class, 'export']);
+
+    Route::post('categories/bulk-delete', [CategoryController::class, 'bulkDelete'])
+    ->name('categories.bulk-delete');
 });

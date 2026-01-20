@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->integer('stock');
             $table->boolean('enabled')->default(true);
             $table->timestamps();
-            $table->timestamps();
         });
     }
 
