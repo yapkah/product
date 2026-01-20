@@ -14,13 +14,14 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->references('id')->on('categories');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
-            $table->timestamps();
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
