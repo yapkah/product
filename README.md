@@ -52,5 +52,8 @@ Product/
 └─ .env
  ```
 
+ # run unit test command
+ ./vendor/phpunit/phpunit/phpunit tests/Feature/ProductTest.php
+
  # project interface
 <img src="ss1.png" alt="Screenshot description" width="500">

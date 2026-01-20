@@ -16,12 +16,12 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->foreignId('category_id')->references('id')->on('categories');
+            $table->foreignId('category_id')->constrained('categories');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->timestamp('created_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+            $table->softDeletes();
         });
     }
 
