@@ -2,21 +2,29 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProductTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
-        $response->assertStatus(200);
+    public function test_can_create_product()
+    {
+        $category = Category::create(['name' => 'Electronics']);
+
+        $response = $this->postJson('/api/products', [
+            'name' => 'Laptop',
+            'category_id' => $category->id,
+            'description' => 'Gaming laptop',
+            'price' => 2000,
+            'stock' => 10,
+            'enabled' => true
+        ]);
+
+        $response->assertStatus(201)
+                 ->assertJsonFragment(['name' => 'Laptop']);
     }
 }
