@@ -24,8 +24,6 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
-                <th>Stock</th>
-                <th>Enabled</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,8 +35,6 @@
                 <td>{{ $p->name }}</td>
                 <td>{{ $p->category->name }}</td>
                 <td>{{ $p->price }}</td>
-                <td>{{ $p->stock }}</td>
-                <td>{{ $p->enabled?'Yes':'No' }}</td>
                 <td>
                     <a href="{{ route('products.edit',$p) }}">Edit</a> |
                     <form method="POST" action="{{ route('products.destroy',$p) }}" style="display:inline">

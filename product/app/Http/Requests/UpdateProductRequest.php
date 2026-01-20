@@ -13,7 +13,8 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        //no user now
+        return true;
     }
 
     /**
@@ -28,8 +29,6 @@ class UpdateProductRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
-            'stock' => 'required|integer|min:0',
-            'enabled' => 'required|boolean'
         ];
     }
 }

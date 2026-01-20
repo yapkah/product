@@ -1,15 +1,20 @@
 # Product
 
 # Setup
+Install laravel & create project named product
+composer create-project laravel/laravel product
+
 Run composer install
+composer install
 
-Create a DB named product in localhost
+Create a DB named product in localhost mysql db
 
-run migrations
+run migrations command
 php artisan migrate --path=database/migrations
 
 build the project
 php artisan serve
+project will default host at http://127.0.0.1:8000
 
 # Folder Structure
 ```
@@ -46,3 +51,6 @@ Product/
 ├─ tests/Feature/ProductTest.php
 └─ .env
  ```
+
+ # project interface
+<img src="ss1.png" alt="Screenshot description" width="500">

@@ -56,7 +56,7 @@
                       rows="3">{{ old('description') }}</textarea>
         </div>
 
-        <button class="btn btn-success">Save</button>
+        <input type ="submit" class="btn btn-success">
         <a href="{{ route('products.index') }}" class="btn btn-secondary">Back</a>
     </form>
 </div>

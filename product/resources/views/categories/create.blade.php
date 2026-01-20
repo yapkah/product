@@ -26,7 +26,7 @@
                    required>
         </div>
 
-        <button class="btn btn-success">Save</button>
+        <input type ="submit" class="btn btn-success">
         <a href="{{ route('categories.index') }}" class="btn btn-secondary">Back</a>
     </form>
 </div>

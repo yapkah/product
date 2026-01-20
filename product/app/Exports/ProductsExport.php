@@ -19,8 +19,6 @@ class ProductsExport implements FromCollection, WithHeadings
                 'Name' => $p->name,
                 'Category' => $p->category->name,
                 'Price' => $p->price,
-                'Stock' => $p->stock,
-                'Enabled' => $p->enabled ? 'Yes' : 'No',
                 'Created At' => $p->created_at
             ];
         });
@@ -28,6 +26,6 @@ class ProductsExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return ['ID', 'Name', 'Category', 'Price', 'Stock', 'Enabled', 'Created At'];
+        return ['ID', 'Name', 'Category', 'Price', 'Created At'];
     }
 }

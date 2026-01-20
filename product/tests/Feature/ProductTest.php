@@ -19,9 +19,7 @@ class ProductTest extends TestCase
             'name' => 'Laptop',
             'category_id' => $category->id,
             'description' => 'Gaming laptop',
-            'price' => 2000,
-            'stock' => 10,
-            'enabled' => true
+            'price' => 2000
         ]);
 
         $response->assertStatus(201)
