@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name'
+            'name' => 'required|string|max:255|unique:categories,name',
         ]);
 
         Category::create($validated);
@@ -52,7 +52,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name,' . $category->id
+            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
         ]);
 
         $category->update($validated);
@@ -70,11 +70,13 @@ class CategoryController extends Controller
     }
 
     /**
-     * Optional: Bulk delete categories
+     * Bulk delete categories
      */
     public function bulkDelete(Request $request)
     {
-        Category::whereIn('id', $request->ids)->delete();
+        if ($request->ids) {
+            Category::whereIn('id', $request->ids)->delete();
+        }
         return redirect()->route('categories.index')->with('success', 'Categories deleted!');
     }
 }

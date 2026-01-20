@@ -18,10 +18,24 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $query = Product::with('category');
-        if ($request->category_id) $query->where('category_id', $request->category_id);
+
+        if ($request->category_id) {
+            $query->where('category_id', $request->category_id);
+        }
+
         $products = $query->paginate(10);
         $categories = Category::all();
-        return view('products.index', compact('products','categories'));
+
+        return view('products.index', compact('products', 'categories'));
+    }
+
+     /**
+     * Create Products
+     */
+    public function create()
+    {
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -33,7 +47,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         Product::create($request->validated());
-        return redirect()->route('products.index')->with('success','Product created!');
+        return redirect()->route('products.index')->with('success', 'Product created!');
     }
 
     /**
@@ -42,7 +56,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
         return view('products.show', compact('product'));
     }
@@ -55,7 +69,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product) {
         $categories = Category::all();
-        return view('products.edit', compact('product','categories'));
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -65,8 +79,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function bulkDelete(Request $request) {
-        Product::whereIn('id',$request->ids)->delete();
-        return redirect()->route('products.index')->with('success','Products deleted!');
+        if ($request->ids) {
+            Product::whereIn('id', $request->ids)->delete();
+        }
+        return redirect()->route('products.index')->with('success', 'Products deleted!');
     }
 
     /**
@@ -89,7 +105,7 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->validated());
-        return redirect()->route('products.index')->with('success','Product updated!');
+        return redirect()->route('products.index')->with('success', 'Product updated!');
     }
 
     /**
@@ -100,7 +116,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
-        return redirect()->route('products.index')->with('success','Product deleted!');
+       $product->delete();
+       return redirect()->route('products.index')->with('success', 'Product deleted!');
     }
 }
