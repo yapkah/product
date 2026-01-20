@@ -37,11 +37,7 @@
                 <td>{{ $p->price }}</td>
                 <td>
                     <a href="{{ route('products.edit',$p) }}">Edit</a> |
-                    <form method="POST" action="{{ route('products.destroy',$p) }}" style="display:inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" onclick="return confirm('Delete?')">Delete</button>
-                    </form>
+                    <button type="button" onclick="if(confirm('Delete?')) document.getElementById('delete-form-{{ $p->id }}').submit()">Delete</button>
                 </td>
             </tr>
             @endforeach
@@ -49,6 +45,13 @@
     </table>
     <button type="submit" onclick="return confirm('Delete selected?')">Bulk Delete</button>
 </form>
+
+@foreach($products as $p)
+<form id="delete-form-{{ $p->id }}" method="POST" action="{{ route('products.destroy',$p) }}" style="display:none">
+    @csrf
+    @method('DELETE')
+</form>
+@endforeach
 
 {{ $products->appends(['category_id' => request('category_id')])->links() }}
 
